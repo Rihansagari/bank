@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Bank Management</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="logo">SB</div><div><h1>Simple Bank</h1><p>Bank Management System</p></div><span class="online">● Online</span></header>
+<main class="container">
+  <section class="hero"><div><p class="tag">WELCOME BACK</p><h2>Banking made simple.</h2><p>Manage accounts, deposits, withdrawals and transfers in one place.</p></div><div class="hero-symbol">₹</div></section>
+  <section class="stats">
+    <article class="stat"><span>Total Accounts</span><strong id="accountCount">0</strong></article>
+    <article class="stat"><span>Total Bank Balance</span><strong id="totalBalance">₹0.00</strong></article>
+  </section>
+  <section class="layout">
+    <div class="left-col">
+      <section class="card"><div class="card-head"><div><h3>Create New Account</h3><p>Register a customer</p></div><span class="icon">＋</span></div>
+        <form id="createForm">
+          <label>Account Holder Name<input name="name" required minlength="2" placeholder="Enter full name"></label>
+          <label>Account Type<select name="type"><option>Savings</option><option>Current</option></select></label>
+          <label>Opening Balance (₹)<input name="amount" type="number" min="0" step="0.01" value="0" required></label>
+          <button class="btn primary" type="submit">Create Account</button>
+        </form>
+      </section>
+      <section class="card"><div class="card-head"><div><h3>Money Operations</h3><p>Deposit or withdraw funds</p></div><span class="icon">↕</span></div>
+        <form id="moneyForm">
+          <label>Select Account<select name="id" id="moneyAccount" required></select></label>
+          <label>Amount (₹)<input name="amount" type="number" min="0.01" step="0.01" placeholder="Enter amount" required></label>
+          <div class="btn-row"><button class="btn success" name="operation" value="deposit">Deposit</button><button class="btn warning" name="operation" value="withdraw">Withdraw</button></div>
+        </form>
+      </section>
+      <section class="card"><div class="card-head"><div><h3>Transfer Money</h3><p>Send funds to another account</p></div><span class="icon">⇄</span></div>
+        <form id="transferForm">
+          <label>From Account<select name="from" id="fromAccount" required></select></label>
+          <label>To Account<select name="to" id="toAccount" required></select></label>
+          <label>Amount (₹)<input name="amount" type="number" min="0.01" step="0.01" placeholder="Enter amount" required></label>
+          <button class="btn primary" type="submit">Transfer Money</button>
+        </form>
+      </section>
+    </div>
+    <div class="right-col">
+      <section class="card"><div class="card-head"><div><h3>All Accounts</h3><p>Customer account list</p></div><span class="icon">▤</span></div>
+        <input id="search" class="search" placeholder="Search name or account number..." />
+        <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Account No.</th><th>Type</th><th>Balance</th></tr></thead><tbody id="accountsBody"></tbody></table></div>
+        <p id="noAccounts" class="empty">No accounts yet. Create your first account.</p>
+      </section>
+      <section class="card"><div class="card-head"><div><h3>Recent Transactions</h3><p>Latest banking activity</p></div><span class="icon">◷</span></div>
+        <div id="transactions" class="transactions"><p class="empty">No transactions yet.</p></div>
+      </section>
+    </div>
+  </section>
+  <footer>Simple Bank Management System · Java OOP College Project</footer>
+</main>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
